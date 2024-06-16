@@ -3,7 +3,7 @@
 set -eo pipefail
 
 if [ -z "${DEBEZIUM_DOCKER_REGISTRY_PRIMARY_NAME}" ]; then
-  DEBEZIUM_DOCKER_REGISTRY_PRIMARY_NAME=quay.io/debezium
+  DEBEZIUM_DOCKER_REGISTRY_PRIMARY_NAME=ibnummuhammad
 fi;
 
 if [ -z "${DEBEZIUM_DOCKER_REGISTRY_SECONDARY_NAME}" ]; then
@@ -94,11 +94,11 @@ fi
 
 DEBEZIUM_VERSION="$1"
 
-build_docker_image base base latest
-build_docker_image zookeeper
-build_docker_image kafka
-build_docker_image connect-base
-build_docker_image connect
+build_docker_image debezium-base base latest
+build_docker_image debezium-zookeeper zookeeper
+build_docker_image debezium-kafka kafka
+build_docker_image debezium-connect-base connect-base
+build_docker_image debezium-connect connect
 # build_docker_image server
 # build_docker_image example-mysql examples/mysql
 # build_docker_image example-mysql-gtids examples/mysql-gtids
