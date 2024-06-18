@@ -10,6 +10,10 @@ Debezium is a distributed platform that turns your existing databases into event
 
 Debezium is open source under the [Apache License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0.html)
 
+# How to build
+
+    ./build-debezium.sh 2.6
+
 # License
 
 The Dockerfiles, scripts, and other files in this Git repository are licensed under the [MIT license](https://opensource.org/licenses/MIT). However, the resulting container images contain software licensed under the [Apache License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0.html) and other licenses (see specific container images for details).
