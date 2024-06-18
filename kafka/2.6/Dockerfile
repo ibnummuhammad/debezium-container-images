@@ -35,13 +35,16 @@ RUN mkdir $KAFKA_DATA && \
 RUN chown -R kafka $KAFKA_HOME && \
     chgrp -R kafka $KAFKA_HOME
 
+# Manually downloaded from https://archive.apache.org/dist/kafka/3.7.0/kafka_2.13-3.7.0.tgz
+# then rename it to kafka.tgz
+COPY ./binary/kafka_2.13-3.7.0.tgz /tmp/kafka.tgz
+
 #
 # 1.) Download Kafka, either from preferred host or archive
 # 2.) Verify the contents and install, remove TGZ file
 # 3.) Remove potentially exploitable classes (see CVE-2021-4104/DBZ-4447 CVE-2019-17571 CVE-2022-23302 CVE-2022-23305 CVE-2020-9493)
 # 4.) Allow random UID to use Kafka (doing this for the bulk of files here, so as to avoid overhead of doing it in a separate layer)
-RUN curl -fSL -o /tmp/kafka.tgz $(curl --stderr /dev/null https://www.apache.org/dyn/closer.cgi\?as_json\=1 | sed -rn 's/.*"preferred":.*"(.*)"/\1/p')$KAFKA_URL_PATH || curl -fSL -o /tmp/kafka.tgz https://archive.apache.org/dist/$KAFKA_URL_PATH &&\
-    echo "$SHA512HASH /tmp/kafka.tgz" | sha512sum -c - &&\
+RUN echo "$SHA512HASH /tmp/kafka.tgz" | sha512sum -c - &&\
     tar -xzf /tmp/kafka.tgz -C $KAFKA_HOME --strip-components 1 &&\
     rm -f /tmp/kafka.tgz &&\
     zip -d /kafka/libs/reload4j-1.2.25.jar org/apache/log4j/net/JMSAppender.class org/apache/log4j/net/SocketServer.class org/apache/log4j/net/JMSSink.class 'org/apache/log4j/jdbc/*' 'org/apache/log4j/chainsaw/*' &&\
