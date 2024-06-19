@@ -47,7 +47,10 @@ RUN echo "$SHA512HASH /tmp/kafka.tgz" | sha512sum -c - &&\
     tar -xzf /tmp/kafka.tgz -C $KAFKA_HOME --strip-components 1 &&\
     rm -f /tmp/kafka.tgz
 
-COPY ./libs/connect-transforms-3.7.0.jar $KAFKA_HOME/connect-transforms-3.7.0.jar
+COPY ./libs/connect-api-3.7.0.jar $KAFKA_HOME/libs/connect-api-3.7.0.jar
+COPY ./libs/connect-json-3.7.0.jar $KAFKA_HOME/libs/connect-json-3.7.0.jar
+COPY ./libs/connect-runtime-3.7.0.jar $KAFKA_HOME/libs/connect-runtime-3.7.0.jar
+COPY ./libs/connect-transforms-3.7.0.jar $KAFKA_HOME/libs/connect-transforms-3.7.0.jar
 
 RUN zip -d /kafka/libs/reload4j-1.2.25.jar org/apache/log4j/net/JMSAppender.class org/apache/log4j/net/SocketServer.class org/apache/log4j/net/JMSSink.class 'org/apache/log4j/jdbc/*' 'org/apache/log4j/chainsaw/*' &&\
     chmod -R g+w,o+w $KAFKA_HOME
