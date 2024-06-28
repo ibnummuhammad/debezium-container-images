@@ -4,7 +4,6 @@ FROM $DEBEZIUM_DOCKER_REGISTRY_PRIMARY_NAME/debezium-kafka:2.6
 LABEL maintainer="Debezium Community"
 
 USER root
-RUN microdnf -y install libaio && microdnf clean all
 
 USER kafka
 
