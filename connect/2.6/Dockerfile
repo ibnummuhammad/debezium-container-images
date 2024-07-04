@@ -20,8 +20,6 @@ ENV DEBEZIUM_VERSION="2.6.2.Final" \
     KCRESTEXT_MD5=f291987d8df27b8019a3f7fe81f953c0 \
     SCRIPTING_MD5=7104dc0f933741c586e26ac62f9b948e
 
-RUN docker-maven-download debezium postgres "$DEBEZIUM_VERSION" "$POSTGRES_MD5"
 RUN docker-maven-download debezium mysql "$DEBEZIUM_VERSION" "$MYSQL_MD5"
-RUN docker-maven-download debezium-additional jdbc jdbc "$DEBEZIUM_VERSION" "$JDBC_MD5"
 RUN docker-maven-download debezium-optional connect-rest-extension "$DEBEZIUM_VERSION" "$KCRESTEXT_MD5"
 RUN docker-maven-download debezium-optional scripting "$DEBEZIUM_VERSION" "$SCRIPTING_MD5"

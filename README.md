@@ -12,6 +12,12 @@ Debezium is open source under the [Apache License, Version 2.0](http://www.apach
 
 # How to build
 
+    cp ~/Documents/github/ibnummuhammad/kafka/clients/build/libs/kafka-clients-3.7.0.jar ~/Documents/github/ibnummuhammad/debezium-container-images/kafka/2.6/libs/kafka-clients-3.7.0.jar
+    cp ~/Documents/github/ibnummuhammad/kafka/connect/api/build/libs/connect-api-3.7.0.jar ~/Documents/github/ibnummuhammad/debezium-container-images/kafka/2.6/libs/connect-api-3.7.0.jar
+    cp ~/Documents/github/ibnummuhammad/kafka/connect/json/build/libs/connect-json-3.7.0.jar ~/Documents/github/ibnummuhammad/debezium-container-images/kafka/2.6/libs/connect-json-3.7.0.jar
+    cp ~/Documents/github/ibnummuhammad/kafka/connect/runtime/build/libs/connect-runtime-3.7.0.jar ~/Documents/github/ibnummuhammad/debezium-container-images/kafka/2.6/libs/connect-runtime-3.7.0.jar
+    cp ~/Documents/github/ibnummuhammad/kafka/connect/transforms/build/libs/connect-transforms-3.7.0.jar ~/Documents/github/ibnummuhammad/debezium-container-images/kafka/2.6/libs/connect-transforms-3.7.0.jar
+
     ./build-debezium.sh 2.6
 
 # License
